@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import { weatherData } from "./sampleData.js";
+import { weatherData } from "./sampleData.js";
 import { DateTime } from "./DateTime";
 import "./App.css";
-import axios from "axios";
+import axios,{CancelToken} from "axios";
 
 var Latitude;
 var Longitude;
@@ -49,22 +49,10 @@ export const WeatherComponent = () => {
     // Call the asynchronous function
     getGeolocationData();
   }, []); // The empty dependency array ensures that useEffect runs only once, similar to componentDidMount
-  const [weatherData,setweatherData] = useState('')
-  useEffect(() => {
-    fetch(url)
-       .then((response) => response.json())
-       .then((data) => {
-          console.log(data);
-          setweatherData(data);
-       })
-       .catch((err) => {
-          console.log(err.message);
-       });
- }, [url]);
-  
+  // const [weatherData,setweatherData] = useState('')
   console.log(url);
   //   const weatherData = axios.get(    "https://api.weatherapi.com/v1/current.json?key=0016e2de200e4217936134217232112&q=17.4332339,78.4411997");
-  console.log(weatherData.location.name);
+  console.log(weatherData);
   return (
     <div>
 
